@@ -32,7 +32,7 @@ docReady(function() {
             let data = await f.json()
             console.log(data)
  
-            resultContainer.innerHTML += `<div>${JSON.serialize(data)}</div>`;
+            resultContainer.innerHTML += `<div>${JSON.stringify(data)}</div>`;
             
             // Optional: To close the QR code scannign after the result is found
             html5QrcodeScanner.clear();
