@@ -24,13 +24,15 @@ docReady(function() {
     var html5QrcodeScanner = new Html5QrcodeScanner(
         "qr-reader", { fps: 10, qrbox: 250 });
     
-    function onScanSuccess(decodedText, decodedResult) {
+    async function onScanSuccess(decodedText, decodedResult) {
         if (decodedText !== lastResult) {
             ++countResults;
             lastResult = decodedText;
-            console.log(`Scan result = ${decodedText}`, decodedResult);
+            let f = await fetch(`https://script.google.com/macros/s/AKfycbwo6Zo1euRDH3XFYx0W0CqZBPAu2BuQ-pfjQaADpXqtQvsV-jFdpI_akSHgZe69_xxhvA/exec?action=list&serial=${decodedText}`)
+            let data = await f.json()
+            console.log(data)
  
-            resultContainer.innerHTML += `<div>[${countResults}] - ${decodedText}</div>`;
+            resultContainer.innerHTML += `<div>${JSON.serialize(data)}</div>`;
             
             // Optional: To close the QR code scannign after the result is found
             html5QrcodeScanner.clear();
