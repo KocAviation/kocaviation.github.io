@@ -28,7 +28,7 @@
                 return
             }
             let posX = 5;
-            let posY = 30;
+            let posY = 20;
             const { jsPDF } = window.jspdf;
             var doc = new jsPDF()
             sn.split(`\n`).forEach(sn => {
@@ -43,7 +43,7 @@
                 code.src = document.getElementById("barcode").src
                 doc.addImage(code, 'png', posX + 21, posY + 22, 50, 10)
                 doc.text(sn, posX + 23, posY + 21)
-                if (posX === 0) {
+                if (posX === 5) {
                     posX = 105;
                 } else {
                     posX = 5;
