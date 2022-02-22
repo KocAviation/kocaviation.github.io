@@ -1,0 +1,41 @@
+html
+  head
+    meta attr charset="UTF-8"
+    title
+      "KocAviation sticker generator"
+    style`
+      #paper {
+        width: 21cm;
+        height: 30cm;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .header {
+        font-family: "Montserrat", sans-serif;
+      }
+    `
+    require @tailwind
+    gfont Inter: 500,700
+    gfont Montserrat: 700
+  body
+    main .flex .items-center .justify-center
+    and .bg-neutral-500
+    and .h-screen .w-screen
+      // the a4 paper
+      div #paper .bg-white .shadow-xl
+        // represents a sticker
+        div .sticker .leading-snug .p-6
+          div .flex .flex-row-reverse
+          and .items-center .justify-center
+            div .bg-black .h-32 .w-32 .ml-10 .rounded-lg
+            div
+              div .text-3xl
+                p .header .font-bold
+                  "KocAviation"
+                p .text-base .text-neutral-700
+                  "Digital part label"
+                p .text-base .mt-4
+                  span .font-bold .mr-2
+                    "Serial:"
+                  "123456789"
