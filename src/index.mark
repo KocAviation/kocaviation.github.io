@@ -1,0 +1,40 @@
+html
+  head
+    meta attr charset="UTF-8"
+    title
+      "KocAviation sticker generator"
+    require @tailwind
+    require @jquery
+    require global.css
+    require qr.min.js
+    require index.js
+    gfont Inter: 500,700
+    gfont Montserrat: 700
+  body
+    main .flex .items-center .justify-center
+    and .bg-neutral-500
+    and .h-screen .w-screen
+      // the a4 paper
+      div #paper .bg-white .shadow-xl
+        // represents a sticker
+        div .sticker .leading-snug .p-6
+          div .flex
+          and .items-center .justify-center
+            div
+              div
+                p .header .font-bold .text-xl
+                  "KocAviation"
+                p .text-xs .mb-1 .text-neutral-700
+                  "Digital part label"
+                p .text-xs .mb-1
+                  span .font-bold .break-all
+                    "Serial: "
+                  span #serial
+                    "123123123123123123123"
+                p .return
+                  `
+                  If lost, return this item to the maker room
+                  at the science building basement.
+                  `
+            // qr code
+            div .bg-black .h-24 .w-24 .ml-10 #test

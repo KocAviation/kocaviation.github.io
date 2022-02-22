@@ -1,0 +1,17 @@
+#paper {
+  width: 21cm;
+  height: 30cm;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.header {
+  font-family: "Montserrat", sans-serif;
+}
+
+.return {
+  font-size: .65em;
+  line-height: 95%;
+}
