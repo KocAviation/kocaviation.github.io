@@ -7,34 +7,83 @@ html
     require @jquery
     require global.css
     require qr.min.js
+    gfont Sora: 700
+    gfont Inter: 400,500,700
     require index.js
-    gfont Inter: 500,700
-    gfont Montserrat: 700
   body
-    main .flex .items-center .justify-center
-    and .bg-neutral-500
-    and .h-screen .w-screen
+
+    /* 
+      ########################
+      Serial number input page
+      ########################
+    */
+    div .flex #initial
+      div .mx-auto .mt-4 .flex-col .bg-white .rounded-lg .px-10 .py-12 .shadow-lg
+      and .border .border-gray-300
+        h1 .text-2xl .font-bold .mr-10
+        and .my-4 .mx-auto
+          "KocAviation Sticker Maker"
+        div .mt-4 .mb-2 .flex .flex-col
+          label attr for="serial-input" .mr-auto
+            "Part Serial Number:"
+          input #serial-input .border .border-gray-300 .shadow-blue-800 .rounded-md
+          and .w-full .px-2 .py-1 .mt-1
+          and .focus:shadow-lg .focus:outline-none .focus:border-blue-400 .transition-colors .duration-500
+        button .bg-blue-500 .rounded-md .text-white .font-light
+        and .px-4 .py-1 .hover:bg-blue-600 .transition-colors .duration-500 attr onclick="setSerial()"
+          "Create Sticker"
+
+    /* 
+      ################################
+      Item page position selector page
+      ################################
+    */
+    div .flex #position-selector .hidden
+    and .mt-24 .mx-auto .p-12 .rounded-lg .bg-gray-50 .border
+    and .border-gray-300 .shadow-xl
+    and .grid .grid-cols-2 .grid-rows-7 .gap-2
+    and attr style="width: 75%; max-width: 800px"
+      button .sticker-picker
+      and .h-20 .w-full
+      and .transition-all .duration-100 .cursor-pointer
+      and .rounded-sm .border .bg-gray-100
+      and .text-sm .font-medium .text-gray-700
+      and .hover:scale-105 .hover:border-gray-300
+      and .flex .justify-center .items-center
+        "Place Here"
+
+    /*
+      ################################
+      Item page position selector page
+      ################################
+    */ 
+    div .flex #page-created .hidden
       // the a4 paper
-      div #paper .bg-white .shadow-xl
-        // represents a sticker
-        div .sticker .leading-snug .p-6
-          div .flex
-          and .items-center .justify-center
-            div
-              div
-                p .header .font-bold .text-xl
-                  "KocAviation"
-                p .text-xs .mb-1 .text-neutral-700
-                  "Digital part label"
-                p .text-xs .mb-1
-                  span .font-bold .break-all
-                    "Serial: "
-                  span #serial
-                    "123123123123123123123"
-                p .return
-                  `
-                  If lost, return this item to the maker room
-                  at the science building basement.
-                  `
-            // qr code
-            div .bg-black .h-24 .w-24 .ml-10 #test
+      div #paper .shadow-xl
+      and .grid .grid-cols-2 .grid-rows-7
+      and .absolute
+
+div #sticker-buffer
+and .hidden .sticker-dimensions
+
+div #sticker-template
+and .sticker-print .leading-snug .p-6 .pr-8 .hidden .sticker-dimensions
+  div .flex
+  and .items-center .justify-center
+    div
+      div
+        p .header .font-bold .text-xl
+          "KocAviation"
+        p .text-xs .mb-1 .text-neutral-700
+          "Digital Part Label"
+        p .text-xs .mb-1
+          span .font-bold .break-all
+            "Serial: "
+          span #serial
+            "N/A"
+        p .subtitle
+          `
+          If lost, return this item to the maker room at the science building basement.
+          `
+    // qr code
+    div .h-24 .w-24 .ml-10 .aspect-square #qr

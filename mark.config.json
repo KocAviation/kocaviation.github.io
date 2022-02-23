@@ -1,5 +1,5 @@
 {
   "minify": true,
-  "outputFile": "dist/index.html",
+  "outputFile": "index.html",
   "indent": 2
 }

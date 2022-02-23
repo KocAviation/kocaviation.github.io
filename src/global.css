@@ -1,6 +1,7 @@
 #paper {
-  width: 21cm;
-  height: 30cm;
+  width: 210mm;
+  height: 297mm;
+  padding: 16mm 5mm;
 }
 
 body {
@@ -8,10 +9,26 @@ body {
 }
 
 .header {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Sora", sans-serif;
 }
 
-.return {
+.subtitle {
   font-size: .65em;
   line-height: 95%;
+}
+
+.sticker-dimensions {
+  width: 99mm;
+  height: 38mm;
+}
+
+#qr img {
+  height: 100%;
+  width: 100%;
+}
+
+@media print {
+  @page {
+    margin: 0;
+  }
 }

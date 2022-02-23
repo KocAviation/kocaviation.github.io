@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function getURLParameter(sParam) {
+        var sPageURL = window.location.search.substring(1);
+        var sURLVariables = sPageURL.split("&");
+        for (var i = 0; i < sURLVariables.length; i++) {
+          var sParameterName = sURLVariables[i].split("=");
+          if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+          }
+        }
+      }
+      async function request(serial) {
+        let f = await fetch(
+          `https://script.google.com/macros/s/AKfycbwo6Zo1euRDH3XFYx0W0CqZBPAu2BuQ-pfjQaADpXqtQvsV-jFdpI_akSHgZe69_xxhvA/exec?action=list&serial=${serial}`
+        );
+        x = await f.json();
+        console.log(x);
+      }
+      serial = getURLParameter("serial");
+      request(serial);
+    </script>
+  </head>
+  <body></body>
+</html>
