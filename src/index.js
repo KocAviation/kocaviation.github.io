@@ -1,5 +1,4 @@
 var serial = "";
-//var objectData = {};
 
 async function setSerial() {
   serial = $("#serial-input").val();
@@ -45,6 +44,6 @@ function createSticker(posIndex) {
   });
   $("html").addClass("paper");
   print();
-  $("body").hide()
-  location.reload()
+  $("body").hide();
+  location.reload();
 }

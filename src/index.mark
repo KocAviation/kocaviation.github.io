@@ -59,7 +59,7 @@ html
     */ 
     div .flex #page-created .hidden
       // the a4 paper
-      div #paper .shadow-xl
+      div #paper
       and .grid .grid-cols-2 .grid-rows-7
       and .absolute
 
