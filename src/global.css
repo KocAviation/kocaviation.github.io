@@ -1,6 +1,9 @@
-#paper {
+#paper, .paper {
   width: 210mm;
   height: 297mm;
+}
+
+#paper {
   padding: 16mm 5mm;
 }
 

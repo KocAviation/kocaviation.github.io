@@ -43,5 +43,8 @@ function createSticker(posIndex) {
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.L,
   });
+  $("html").addClass("paper");
   print();
+  $("body").hide()
+  location.reload()
 }

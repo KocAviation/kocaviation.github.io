@@ -86,4 +86,4 @@ and .sticker-print .leading-snug .p-6 .pr-8 .hidden .sticker-dimensions
           If lost, return this item to the maker room at the science building basement.
           `
     // qr code
-    div .h-24 .w-24 .ml-10 .aspect-square #qr
+    div .h-24 .w-24 .ml-10 .aspect-square .flex-shrink-0 #qr
