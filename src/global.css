@@ -1,4 +1,5 @@
-#paper, .paper {
+#paper,
+.paper {
   width: 210mm;
   height: 297mm;
 }
@@ -33,5 +34,20 @@ body {
 @media print {
   @page {
     margin: 0;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  #paper,
+  #paper * {
+    visibility: visible;
+  }
+
+  #paper {
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
