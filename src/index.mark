@@ -29,8 +29,8 @@ html
           input #serial-input .border .border-gray-300 .shadow-blue-800 .rounded-md
           and .w-full .px-2 .py-1 .mt-1
           and .focus:shadow-lg .focus:outline-none .focus:border-blue-400 .transition-colors .duration-500
-        button .bg-blue-500 .rounded-md .text-white .font-light
-        and .px-4 .py-1 .hover:bg-blue-600 .transition-colors .duration-500 attr onclick="setSerial()"
+        button .bg-blue-500 .rounded-md .text-white
+        and .px-4 .py-1 .hover:bg-blue-600 .transition-colors .duration-200 attr onclick="setSerial()"
           "Create Sticker"
 
     /* 

@@ -6,7 +6,31 @@ async function setSerial() {
   $("#position-selector").removeClass("hidden");
 }
 
+function getURLParameter(sParam) {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split("&");
+  for (var i = 0; i < sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split("=");
+    if (sParameterName[0] == sParam) {
+      return sParameterName[1];
+    }
+  }
+}
+
+function resetApp() {
+  $("html").addClass("paper");
+  print();
+  $("body").hide();
+  window.location.replace(window.location.toString().split('?')[0])
+}
+
 $(window).on("load", function () {
+  let currentParam = getURLParameter("print")
+  if (currentParam !== undefined) {
+    serial = currentParam;
+    $("#initial").addClass("hidden");
+    $("#position-selector").removeClass("hidden");
+  }
   for (let i = 1; i <= 14; i++) {
     $("#position-selector")
       .children()
@@ -42,8 +66,5 @@ function createSticker(posIndex) {
     colorLight: "#ffffff",
     correctLevel: QRCode.CorrectLevel.L,
   });
-  $("html").addClass("paper");
-  print();
-  $("body").hide();
-  location.reload();
+  resetApp();
 }

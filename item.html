@@ -4,8 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>KocAviation QR Readout</title>
     <script>
+      async function setUI(obj) {
+        obj = await obj.parts[0];
+        console.log(obj);
+        /*
+          Condition: "New"
+          Damage: "None"
+          "Manufactured At": "Awaiting Manufacture"
+          Notes: "Bu parça orta kanat, önceki denemelerde başarıyla bastığımız profilin aynısı. Öncekinde yanlışlıkla bazı kanat parçalarında açmayı unutmuştuk ondan bazılarında olmamıştı. Şimdilik bu orta kanadı basalım, performansı test edelim, iyiyse tüm kanadı basalım. Gövdenin durumuna tüm ekip toplanınca karar vermeli, bu süreçte boş durmayıp kanadı hazırlayalım, nasıl yapıldığını zaten biliyoruz. Teker teker kanadı tamamlar, sonra servo tutucularını basıp gelecek Perşembe kanat montajını tamamlayıp gövde ile ilgili final kararı veririz, Push Rod adaptörleri de gelirse kanadın tüm montajını tamamlar, gövde ile devam ederiz. Barış sticker'ları hazırlıyor, bitti sayılır onlar da hazır olunca basıp getireceğim.\n\nBen bu parça ile ilgili detaylar için Mehmet Hocam sizinle görüşeceğim.\n\nFilament: Kırmızı\nBaskı Süresi: 3sa 29dk\nAğırlık: 41g\nMetraj: 5.19m"
+          PC: "Awaiting Prep."
+          "Part Link": "https://drive.google.com/file/d/1YmHbHmfrtuJXW_MigFIi2_zr0C-8zK32/view?usp=sharing"
+          "Part Name": "WingC"
+          "Part Serial Number": "CDK9MQVYP0"
+          "Part Submitted At": "2022-02-22T20:37:32.527Z"
+          "Part Submitted By": "yigitkeremo2025@stu.koc.k12.tr"
+          "Print Profile": "A_W_Revised"
+          QC: "Awaiting"
+          Type: "3D Printed"
+        */
+        outHTML = ""
+        for (key in obj) {
+          outHTML += `<b>${key}</b><p class="sm">${obj[key]}</p><br />`
+        }
+        $("#out").html(outHTML)
+      }
       function getURLParameter(sParam) {
         var sPageURL = window.location.search.substring(1);
         var sURLVariables = sPageURL.split("&");
@@ -20,12 +45,39 @@
         let f = await fetch(
           `https://script.google.com/macros/s/AKfycbwo6Zo1euRDH3XFYx0W0CqZBPAu2BuQ-pfjQaADpXqtQvsV-jFdpI_akSHgZe69_xxhvA/exec?action=list&serial=${serial}`
         );
-        x = await f.json();
-        console.log(x);
+        return await f.json();
       }
-      serial = getURLParameter("serial");
-      request(serial);
+      try {
+        const run = async () => {
+          serial = getURLParameter("serial");
+          outObj = await request(serial);
+          setUI(outObj);
+        };
+        run();
+      } catch (e) {
+        console.log("error", e);
+        $("#out").html("<h1>Invalid URL</h1>")
+      }
     </script>
+    <style>
+      p {
+        margin: 0;
+        padding: 6px 0;
+      }
+      #out {
+        padding: 16px;
+        line-height: 100%;
+        font-family: Arial;
+      }
+      .sm {
+        font-size: 0.75em;
+      }
+      </style>
+    </head>
   </head>
-  <body></body>
+  <body>
+    <div id="out">
+      Loading...
+    </div>
+  </body>
 </html>
